@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // Environment variables (set these in your server environment)
-const BOT_TOKEN = process.env.BOT_TOKEN || '8415965824:AAEaNtgh1TIZVfz-lDx2NrJbBnte4JiQNJE';
-const CHAT_ID = process.env.CHAT_ID || '7873751682';
+const BOT_TOKEN = process.env.BOT_TOKEN';
+const CHAT_ID = process.env.CHAT_ID';
 
 // Login endpoint
 app.post('/api/login', async (req, res) => {
@@ -64,4 +64,5 @@ app.get('/health', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Health check: http://localhost:${PORT}/health`);
+
 });
