@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    /* background: #fff; */
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.user-manual {
+    background: #f1f5ff;
+    border: 1px solid #dce4ff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: #0073ff;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.logo-box {
+    text-align: center;
+}
+
+.school-logo {
+    width: 155px;
+    height: 155px;
+
+}
+
+.school-name {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 18px;
+    color: #1b2f59;
+    font-weight: bold;
+}
+
+.login-title {
+    font-size: 18px;
+    color: #111;
+    font-weight: 600;
+}
+
+.welcome {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #bbbaba;
+}
+
+.form input {
+    width: 100%;
+    padding: 0px;
+    border: none;
+    border-bottom: 1px solid #bababa;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.password-box {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #aaa;
+}
+
+.password-box input {
+    border: none;
+    flex: 1;
+}
+
+.toggle {
+    cursor: pointer;
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.forgot {
+    font-size: 13px;
+    color: #0066ff;
+    text-decoration: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2979ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.apps {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.apps img {
+    width: 140px;
+}
+
+.school-code {
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.social img {
+    width: 32px;
+    cursor: pointer;
+}
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+}
+
+.footer img {
+    width: 130px;
+    margin-top: 5px;
+}
+
+.logel {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}

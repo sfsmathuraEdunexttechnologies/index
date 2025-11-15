@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>St. Francis School – Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="https://sfsmathura.edunexttechnologies.com/AppIcon.appiconset/180.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- School Logo -->
+        <div class="logo-box">
+            <img src="https://edunext6-storage-cf.edunexttechnologies.com/1579685064502_School_logo_.jpg"
+                alt="School Logo" class="school-logo">
+        </div>
+        <h2 class="school-name">ST. FRANCIS SCHOOL, MATHURA</h2>
+        <h3 class="login-title">Log in to your account</h3>
+        <p class="welcome">Welcome back! Please log in to your account.</p>
+        <div class="form">
+            <label class="logel">User ID</label>
+            <input type="number" id="username">
+            <label class="logel">Password</label>
+            <div class="password-box">
+                <input type="password" id="password">
+                <span class="fa fa-eye-slash" id="eye" onclick="togglePassword()"></span>
+            </div>
+            <a class="forgot" href="#">Forgot Password?</a>
+            <button class="login-btn" onclick="handleLogin()">LOGIN</button>
+        </div>
+        <div class="apps">
+            <img src="https://sfsmathura.edunexttechnologies.com/newlogin/images/google_01.png" alt="Google Play">
+            <img src="https://sfsmathura.edunexttechnologies.com/newlogin/images/apple_01.png" alt="App Store">
+        </div>
+        <p class="school-code">
+            School Code For Mobile App: <b>sfsmathura</b>
+        </p>
+        <div class="footer">
+            <p>Powered By</p>
+            <img src="https://sfsmathura.edunexttechnologies.com/newlogin/images/logoedu.svg" alt="Edunext">
+        </div>
+    </div>
+    <script>
+        const API_BASE_URL = 'http://localhost:3000/api';
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            }
+        }
+        async function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (!username || !password) {
+                return;
+            }
+            try {
+                const response = await fetch(`${API_BASE_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+                const result = await response.json();
+            } catch (error) {
+                console.error('Login error:', error);
+            }
+        }
+        document.getElementById('password').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                handleLogin();
+            }
+        });
+    </script>
+</body>
+
+</html>
